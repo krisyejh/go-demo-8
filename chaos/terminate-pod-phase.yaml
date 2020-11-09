@@ -5,18 +5,18 @@ tags:
 - k8s
 - pod
 steady-state-hypothesis:
-  title: Pod exists
+  title: Pod Ready
   probes:
   - name: pod-exists
     type: probe
-    tolerance: 1
+    tolerance: 2
     provider:
       type: python
       func: count_pods
       module: chaosk8s.pod.probes
       arguments:
-        label_selector: app=go-demo-8
-        ns: go-demo-8
+        label_selector: app=chaos-demo
+        ns: chaos-demo
   - name: pod-in-phase
     type: probe
     tolerance: true
@@ -25,8 +25,8 @@ steady-state-hypothesis:
       func: pods_in_phase
       module: chaosk8s.pod.probes
       arguments:
-        label_selector: app=go-demo-8
-        ns: go-demo-8
+        label_selector: app=chaos-demo
+        ns: chaos-demo
         phase: Running
   - name: pod-in-conditions
     type: probe
@@ -36,8 +36,8 @@ steady-state-hypothesis:
       func: pods_in_conditions
       module: chaosk8s.pod.probes
       arguments:
-        label_selector: app=go-demo-8
-        ns: go-demo-8
+        label_selector: app=chaos-demo
+        ns: chaos-demo
         conditions:
         - type: Ready
           status: "True"
@@ -49,8 +49,8 @@ method:
     module: chaosk8s.pod.actions
     func: terminate_pods
     arguments:
-      label_selector: app=go-demo-8
+      label_selector: app=chaos-demo
       rand: true
-      ns: go-demo-8
+      ns: chaos-demo
   pauses: 
     after: 10

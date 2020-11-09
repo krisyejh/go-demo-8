@@ -12,6 +12,6 @@ method:
     module: chaosk8s.pod.actions
     func: terminate_pods
     arguments:
-      label_selector: app=go-demo-8
+      label_selector: app=chaos-demo
       rand: true
-      ns: go-demo-8
+      ns: chaos-demo

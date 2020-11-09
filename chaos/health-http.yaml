@@ -21,7 +21,7 @@ steady-state-hypothesis:
       verify_tls: false
       url: http://${ingress_host}/demo/person
       headers:
-        Host: go-demo-8.acme.com
+        Host: chaos-demo.c6c48265dd59a479bb7569d448c2969eb.cn-shenzhen.alicontainer.com
 method:
 - type: action
   name: terminate-app-pod
@@ -30,8 +30,8 @@ method:
     module: chaosk8s.pod.actions
     func: terminate_pods
     arguments:
-      label_selector: app=go-demo-8
+      label_selector: app=chaos-demo
       rand: true
-      ns: go-demo-8
+      ns: chaos-demo
   pauses: 
     after: 2

@@ -6,7 +6,7 @@ metadata:
   name: repeater
 spec:
   hosts:
-  - repeater.acme.com
+  - repeater.jianhong.com
   - repeater
   gateways:
   - repeater
@@ -46,4 +46,4 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - repeater.acme.com
+    - repeater.jianhong.com

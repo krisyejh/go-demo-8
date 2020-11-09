@@ -20,9 +20,9 @@ steady-state-hypothesis:
       type: http
       timeout: 5
       verify_tls: false
-      url: http://${ingress_host}?addr=http://go-demo-8/limiter
+      url: http://${ingress_host}?addr=http://chaos-demo/limiter
       headers:
-        Host: repeater.acme.com
+        Host: repeater.jianhong.com
 method:
 - type: action
   name: abort-failure
@@ -33,7 +33,7 @@ method:
     - run
     - siege
     - --namespace
-    - go-demo-8
+    - chaos-demo
     - --image
     - yokogawa/siege
     - --generator
@@ -45,6 +45,6 @@ method:
     - 50
     - --time
     - 20S
-    - "http://go-demo-8/limiter"
+    - "http://chaos-demo/limiter"
   pauses: 
     after: 5

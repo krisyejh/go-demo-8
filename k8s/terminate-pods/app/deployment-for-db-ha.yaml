@@ -3,24 +3,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: chaos-demo
+  name: chaos-demo-for-db-ha
   labels:
-    app: chaos-demo
+    app: chaos-demo-for-db-ha
 spec:
   selector:
     matchLabels:
-      app: chaos-demo
+      app: chaos-demo-for-db-ha
   template:
     metadata:
       labels:
-        app: chaos-demo
+        app: chaos-demo-for-db-ha
     spec:
       containers:
       - name: chaos-demo
         image: yejianhonghong/chaostoolkit-demo:0.0.1
         env:
         - name: DB
-          value: chaos-demo-db
+          value: chaos-demo-db-ha-mongodb-headless
         - name: VERSION
           value: "0.0.1"
         ports:

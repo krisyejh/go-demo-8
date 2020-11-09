@@ -3,26 +3,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: go-demo-8-db
+  name: chaos-demo-db
   labels:
-    app: go-demo-8-db
+    app: chaos-demo-db
     release: primary
 spec:
   selector:
     matchLabels:
-      app: go-demo-8-db
+      app: chaos-demo-db
       release: primary
   template:
     metadata:
       labels:
-        app: go-demo-8-db
+        app: chaos-demo-db
         release: primary
     spec:
       securityContext:
         fsGroup: 1001
         runAsUser: 1001
       containers:
-      - name: go-demo-8-db
+      - name: chaos-demo-db
         image: docker.io/bitnami/mongodb:4.0.3
         imagePullPolicy: "Always"
         env:
@@ -66,4 +66,4 @@ spec:
       volumes:
       - name: data
         persistentVolumeClaim:
-          claimName: go-demo-8-db
+          claimName: chaos-demo-db

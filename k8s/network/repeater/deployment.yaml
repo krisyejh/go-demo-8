@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: repeater
-        image: vfarcic/repeater:0.0.1
+        image: yejianhonghong/chaostoolkit-repeater:0.0.1
         env:
         - name: VERSION
           value: "0.0.1"

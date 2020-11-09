@@ -4,12 +4,12 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   labels:
-    app: go-demo-8-db
+    app: chaos-demo-db
     release: primary
-  name: go-demo-8-db
+  name: chaos-demo-db
 spec:
   accessModes:
     - "ReadWriteOnce"
   resources:
     requests:
-      storage: "8Gi"
+      storage: "20Gi"

@@ -21,7 +21,7 @@ steady-state-hypothesis:
       verify_tls: false
       url: http://${ingress_host}/demo/person
       headers:
-        Host: chaos-demo.c6c48265dd59a479bb7569d448c2969eb.cn-shenzhen.alicontainer.com
+        Host: chaos-dbha.c6c48265dd59a479bb7569d448c2969eb.cn-shenzhen.alicontainer.com
 method:
 - type: action
   name: terminate-db-pod
@@ -30,7 +30,7 @@ method:
     module: chaosk8s.pod.actions
     func: terminate_pods
     arguments:
-      label_selector: app=chaos-demo-db
+      label_selector: app.kubernetes.io/component=mongodb
       rand: true
       ns: chaos-demo
   pauses: 

@@ -24,7 +24,7 @@ data:
           func: all_microservices_healthy
           module: chaosk8s.probes
           arguments:
-            ns: go-demo-8
+            ns: chaos-demo
     method:
     - type: action
       name: terminate-app-pod
@@ -34,7 +34,7 @@ data:
         func: terminate_pods
         arguments:
           rand: true
-          ns: go-demo-8
+          ns: chaos-demo
       pauses: 
         after: 10
 

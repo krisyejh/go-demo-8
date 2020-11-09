@@ -19,9 +19,9 @@ steady-state-hypothesis:
       type: http
       timeout: 5
       verify_tls: false
-      url: http://${ingress_host}?addr=http://go-demo-8
+      url: http://${ingress_host}?addr=http://chaos-demo
       headers:
-        Host: repeater.acme.com
+        Host: repeater.jianhong.com
   - type: probe
     tolerance: 200
     ref: app-responds-to-requests
@@ -42,17 +42,17 @@ method:
     module: chaosistio.fault.actions
     func: add_abort_fault
     arguments:
-      virtual_service_name: go-demo-8
+      virtual_service_name: chaos-demo
       http_status: 500
       routes:
         - destination:
-            host: go-demo-8
+            host: chaos-demo
             subset: primary
       percentage: 100
       version: networking.istio.io/v1alpha3
-      ns: go-demo-8
+      ns: chaos-demo
   pauses: 
-    after: 1
+    after: 5
 rollbacks:
 - type: action
   name: remove-abort-failure
@@ -61,10 +61,10 @@ rollbacks:
     func: remove_abort_fault
     module: chaosistio.fault.actions
     arguments:
-      virtual_service_name: go-demo-8
+      virtual_service_name: chaos-demo
       routes:
         - destination:
-            host: go-demo-8
+            host: chaos-demo
             subset: primary
       version: networking.istio.io/v1alpha3
-      ns: go-demo-8
+      ns: chaos-demo

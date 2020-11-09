@@ -3,9 +3,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: go-demo-8-db
+  name: chaos-demo-db
   labels:
-    app: go-demo-8-db
+    app: chaos-demo-db
     release: primary
 spec:
   type: ClusterIP
@@ -14,5 +14,5 @@ spec:
     port: 27017
     targetPort: mongodb
   selector:
-    app: go-demo-8-db
+    app: chaos-demo-db
     release: primary

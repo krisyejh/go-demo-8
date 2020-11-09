@@ -3,27 +3,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: go-demo-8
+  name: chaos-demo
   labels:
-    app: go-demo-8
+    app: chaos-demo
     release: primary
 spec:
   selector:
     matchLabels:
-      app: go-demo-8
+      app: chaos-demo
       release: primary
   template:
     metadata:
       labels:
-        app: go-demo-8
+        app: chaos-demo
         release: primary
     spec:
       containers:
-      - name: go-demo-8
-        image: vfarcic/go-demo-8:0.0.1
+      - name: chaos-demo
+        image: yejianhonghong/chaostoolkit-demo:0.0.1
         env:
         - name: DB
-          value: go-demo-8-db
+          value: chaos-demo-db
         - name: VERSION
           value: "0.0.1"
         ports:

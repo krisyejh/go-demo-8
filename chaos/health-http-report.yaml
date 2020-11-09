@@ -1,22 +1,27 @@
 version: 1.0.0
 title: What happens if we terminate an instance of the application?
-description: If an instance of the application is terminated, a new instance should be created
+description: If an instance of the application is terminated, the applications as a whole should still be operational.
 tags:
 - k8s
 - pod
-- deployment
+- http
+configuration:
+  ingress_host:
+      type: env
+      key: INGRESS_HOST
 steady-state-hypothesis:
   title: The app is healthy
   probes:
-  - name: all-apps-are-healthy
+  - name: app-responds-to-requests
     type: probe
-    tolerance: true
+    tolerance: 200
     provider:
-      type: python
-      func: all_pods_healthy
-      module: chaosk8s.probes
-      arguments:
-        ns: chaos-demo
+      type: http
+      timeout: 3
+      verify_tls: false
+      url: http://${ingress_host}/demo/person
+      headers:
+        Host: chaos-demo.xiaohong.com
 method:
 - type: action
   name: terminate-app-pod
@@ -29,4 +34,4 @@ method:
       rand: true
       ns: chaos-demo
   pauses: 
-    after: 10
+    after: 5

@@ -3,12 +3,12 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: go-demo-8
+  name: chaos-demo
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: go-demo-8
+    name: chaos-demo
   minReplicas: 2
   maxReplicas: 6
   metrics:
